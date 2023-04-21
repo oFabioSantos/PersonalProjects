@@ -1,0 +1,23 @@
+{% extends "indicativo/base.html" %}
+
+{% load bootstrap5 %}
+
+{% block header%}
+  <br>
+  <h4>Indicativos</h4>
+  <br>
+{% endblock header %}
+
+{% block content %}
+
+<ul class="list-group-flush">
+{% for x in indicativo %}
+  <li class="list-group-item"><a href="{% url 'indicativo:listar_radioamador' x.id %}">{{x}}</a></li>
+{% empty %}
+  <p>Não foram encontrados indicativos cadastrados</p>
+{% endfor %}  
+</ul>
+<a href="{% url 'indicativo:adicionar_indicativo' %}">Adicionar Indicativo</a>
+
+
+{% endblock content %}

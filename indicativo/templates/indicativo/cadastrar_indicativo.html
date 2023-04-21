@@ -1,0 +1,23 @@
+{% extends 'indicativo/base.html' %}
+
+{% load bootstrap5 %}
+
+{% block header %}
+  <br>
+  <h3>Adicione seus indicativos</h3>
+  <br>
+{% endblock header %}
+
+
+{% block content %}
+
+<form action="{% url 'indicativo:adicionar_indicativo' %}" method='post' class="form">
+  
+  {% csrf_token %}
+  {% bootstrap_form form %}
+
+  <button type="submit" class="btn btn-primary">Adicionar</button> <!--O button deve estar dentro do contexto do form para funcionar corretamente-->
+</form>
+
+
+{% endblock content %}

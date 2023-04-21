@@ -1,0 +1,20 @@
+{% extends "indicativo/base.html" %}
+
+
+{% load bootstrap5 %}
+
+{% block header %}
+    <br> 
+    <h3>Localizar Registro</h3>
+    <br>
+{% endblock header%}
+
+
+{% block content %}
+  <form action="{% url 'indicativo:buscar_indicativos' %}" method='post' class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-primary">Buscar</button> 
+  </form>    
+{% endblock content %}
+

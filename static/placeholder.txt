@@ -1,0 +1,2 @@
+Esse arquivo garante que a pasta indicativo/static será adicionada ao projeto.
+Pois diretórios vazios não serão inclusos no deploy do projeto.

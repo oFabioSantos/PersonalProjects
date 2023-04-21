@@ -1,0 +1,32 @@
+{% extends "indicativo/base.html" %}
+
+{% load bootstrap5 %}
+
+
+{% block header %}
+
+<h4>Dados do Radioamador</h4>
+  <h5>{{ indicativo }}</h5>  
+{%endblock header%}
+
+
+{% block content %}
+  <p>
+    <a href="{% url 'indicativo:adicionar_entrada' indicativo.id %}">Adicionar Dados</a>
+  </p>
+    
+  {% for x in dados %}
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p>{{ x.date_added|date:'M d, Y H:i' }}</p>
+          <p>{{ x.text|linebreaks }}</p>
+          <a href="{% url 'indicativo:editar_dados' x.id %}">Editar Dados</a>         
+        </li>
+      </ul>
+    </div><!--style-->
+  {% empty %}
+    <p>Não há registros de dados para este radioamador.</p>          
+  {% endfor %} 
+
+{% endblock content %}

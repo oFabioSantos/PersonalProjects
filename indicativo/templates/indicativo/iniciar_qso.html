@@ -1,0 +1,21 @@
+{% extends 'indicativo/base.html' %}
+
+{% load bootstrap5 %}
+
+{% block header %}
+<br>
+<h4>Adicionar informações do QSO</h4>
+<br>
+{% endblock header %}
+
+
+{% block content %}
+
+<form action="{% url 'indicativo:iniciar_qso' %}" method='post' class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <button name="submit" class="btn btn-primary">Adicionar QSO</button> <!--O button deve estar dentro do contexto do form para funcionar corretamente-->
+</form>
+
+{% endblock content %}
+

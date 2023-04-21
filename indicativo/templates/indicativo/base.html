@@ -1,0 +1,85 @@
+{% load bootstrap5 %}
+{% load static %}
+   
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/bss" href="{% static '/css/main.css' %}">
+    <link rel="icon" href="{% static 'img/walkie-talkie-icon-12.jpg' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/walkie-talkie-icon-12.jpg' %}" type="image/x-icon">
+
+    
+    <title>Indicativo</title>
+   
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}  
+    <!-- O head não contém informações mas diretrizes para o funcionamento correto do site. -->
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'indicativo:index' %}">Index</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'indicativo:buscar_indicativos' %}">Consultar Indicativo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'indicativo:listar_indicativos' %}">Listar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'indicativo:iniciar_qso' %}">Iniciar QSO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'indicativo:listar_qso' %}">Listar QSO</a>
+            </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link">Hello, {{ user.username.capitalize }}</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:logout_view' %}">Log out</a>
+              </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+            </li>
+            {% endif %}  
+           </ul>
+        </div>
+      </div>
+    </nav> 
+    <div class="container">
+      <div class="page-header">
+        {% block header %}
+        {% endblock header %} <!--Each block should be placed within a div-->
+      </div>
+      <div>
+        {% block content %}
+        {% endblock content %}
+      </div>        
+    </div> 
+  </body><!-- /div container-->
+</html>
+
+
+
+
+
+
+

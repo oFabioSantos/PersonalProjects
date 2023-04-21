@@ -1,0 +1,24 @@
+{%  extends "indicativo/base.html" %}
+<!-- Esse template recebe os métodos da função auth descritas no arquivo urls.py -->
+
+{% load bootstrap5 %}
+
+{% block header %}
+  <br>
+  <h3>Log in to your account</h3>
+  <br>
+  
+{% endblock header %}
+
+{% block content %}
+
+<form action="{% url 'users:login' %}", method="post" class="form"> <!--Aqui passamos o nome da função buit-in do arquivo url-->
+ 
+  {% csrf_token %}  <!--Segurança-->
+  {% bootstrap_form form %}  <!--Variável responsável por construir o form-->
+
+  <button name="submit" class="btn btn-primary">Log in</button>
+  <input type="hidden", name="next", value="{% url 'indicativo:index' %}">
+</form>  
+
+{% endblock content %}

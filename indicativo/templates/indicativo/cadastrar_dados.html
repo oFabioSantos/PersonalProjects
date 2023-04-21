@@ -1,0 +1,21 @@
+{% extends "indicativo/base.html" %}
+
+{% load bootstrap5 %}
+
+
+
+{% block header %}
+  <p><a href="{% url 'indicativo:listar_radioamador' indicativo.id %}">{{ indicativo }}</a></p>
+  <h4>Adicionar Dados do radioamador</h4>
+<br>  
+{% endblock header %}
+
+{% block content %}
+<form action="{% url 'indicativo:adicionar_entrada' indicativo.id %}" method='post' class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <button name="submit" class="btn btn-primary">Adicionar Entrada</button> <!--O button deve estar dentro do contexto do form para funcionar corretamente-->
+</form>
+
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'indicativo/base.html' %}
+
+{% load bootstrap5 %}
+
+{% block header %}
+  <h4>Lista de QSO's</h4>
+  <br>
+{% endblock header %}
+
+
+{% block content %}
+ 
+  {% for x in dados %}
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p>{{ x.date_added|date:"D, dM, Y" }}<p>
+          <p>{{ x.text|linebreaks }}</p>
+        </li>
+      </ul>  
+    </div><!--card-->   
+  {% empty %}
+    <P>Não foram encontrados registros de QSO's</P>      
+  {% endfor %}
+
+{% endblock content %}
