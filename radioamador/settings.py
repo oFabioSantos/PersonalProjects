@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=i90n-bvj_b-zfp3svjr^k6*0^@v2ggztps+t_sd56%%=4cby&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  # Se debug = False, temos que especificar um host que hospedará a aplicação, como o Heroku, AWS etc...
 
 ALLOWED_HOSTS = []
 
@@ -159,7 +159,7 @@ if os.getcwd() == '/app':  #  Permite a app ser rodada no server Heroku ao invé
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FOWARDED_PROTO', 'https')  # Garante o funcionamento das requisições HTTPS seguras.
     
     # Cabeçalhos para permitir todos os hosts
-    ALLOWED_HOSTS = ['*']  # Permite que todos os endpoints sejam atendidos pelo server ao invés do localhost.
+    ALLOWED_HOSTS = ['*']  # Permite que quaisquer serves atendam as requisições, se debug = False, devemos especificar um host_allowed, como o Heroku.
     
     #  Configuração de recursos estáticos
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Isso aqui cuida de todos os arquivos estáticos, imagens, sons, vídeos, css, js etc...
