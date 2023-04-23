@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=i90n-bvj_b-zfp3svjr^k6*0^@v2ggztps+t_sd56%%=4cby&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # Se debug = False, temos que especificar um host que hospedará a aplicação, como o Heroku, AWS etc...
+DEBUG = False  # Se debug = False, temos que especificar um host que hospedará a aplicação, como o Heroku, AWS etc... Sempre use debug = False em um server de produção.
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -64,7 +64,7 @@ ROOT_URLCONF = 'radioamador.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  #  Em um ambiente de produção, com o Debug = True, deve ser configurado um código para a app gerenciar os templates handlers
+        'DIRS': [os.path.join(BASE_DIR, 'error_handlers')],  #  Em um ambiente de produção, com o Debug = True, deve ser configurado um código para a app gerenciar os templates handlers
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
