@@ -65,7 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'error_handlers')],  #  Em um ambiente de produção, com o Debug = True, deve ser configurado um código para a app gerenciar os templates handlers
-        'APP_DIRS': True,
+        'APP_DIRS': True,  # Depois de hospedar, faça um migrate e sua app irá acessar o db.
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'radioamador.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',  # Quando fazer o deploy, aqui vc coloca o hostname, porta, username, password e o nome do database do server.
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
