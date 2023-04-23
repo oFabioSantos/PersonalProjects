@@ -64,7 +64,7 @@ ROOT_URLCONF = 'radioamador.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [],  #  Em um ambiente de produção, com o Debug = True, deve ser configurado um código para a app gerenciar os templates handlers
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
